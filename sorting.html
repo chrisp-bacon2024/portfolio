@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualizer</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/sorting.css">
+</head>
+<body>
+    <div id="menu">
+        <a href="/">About Christopher</a>
+        <a href="/sorting-visualizer">Sorting Visualizer</a>
+        <a href="/pathfinder-visualizer">Pathfinder Visualizer</a>
+        <a href="/knapsack-problem">Knapsack Problem</a>
+        <a href="/sudoku-solver">Sudoku Solver</a>
+    </div>
+    <div class="subheader">
+        <div class="num-section">
+            <h2>Total cells</h2>
+            <input type="number" id="numCells" name="totalCells" min="1" max="120" value="30"> <sup>2</sup>
+        </div>
+        <div class="control-section">
+            <h2>Controls</h2>
+            <button id="playPauseBtn">Play</button>
+            <input type="range" id="slider" min="1" max="75" value="1">
+            <button class="speed-button" id="speedButton">1x</button>
+        </div>
+        <div class="algorithms-section">
+            <h1>Sorting Algorithms</h1>
+            <ul class="algorithms">
+                <li class="algoButton">
+                    <button id="bubble">Bubble Sort</button>
+                    <div class="tooltip">
+                        Loops through the list, compares adjacent elements and swaps them if they are in the wrong order.<br><br>
+                        <strong>Time Complexity:</strong> O(n^2)<br>
+                        <strong>Space Complexity:</strong> O(1)
+                    </div>
+                </li>
+                <li class="algoButton">
+                    <button id="insert">Insertion Sort</button>
+                    <div class="tooltip">
+                        Divides the list into sorted and unsorted portion, and determines the right position of unsorted items in the sorted portion.<br><br>
+                        <strong>Time Complexity:</strong> O(n^2)<br>
+                        <strong>Space Complexity:</strong> O(1)
+                    </div>
+                </li>
+                <li class="algoButton">
+                    <button id="select">Selection Sort</button>
+                    <div class="tooltip">
+                        Iterates through the list, selects the smallest item in the unsorted portion to place in the sorted portion.<br><br>
+                        <strong>Time Complexity:</strong> O(n^2)<br>
+                        <strong>Space Complexity:</strong> O(1)
+                    </div>
+    
+                </li>
+                <li class="algoButton">
+                    <button id="heap">Heap Sort</button>
+                    <div class="tooltip">
+                        Builds a max heap, and repeatedly swaps the root of the heap with array's last element. Then reduces heap size and heapifies again until the array has been fully covered.<br><br>
+                        <strong>Time Complexity:</strong> O(n log n)<br>
+                        <strong>Space Complexity:</strong> O(1)
+                    </div>
+                </li>
+                <li class="algoButton">
+                    <button id="quick">Quick Sort</button>
+                    <div class="tooltip">
+                        Selects a pivot, and sorts lesser items to the left and greater items right. Then recursively does the same to the left sub-array and the right until sub has length of 1.<br><br>
+                        <strong>Avg Time Complexity:</strong> O(n log n)<br>
+                        <strong>Avg Space Complexity:</strong> O(log n)
+                    </div>
+                </li>
+                <li class="algoButton">
+                    <button id="merge">Merge Sort</button>
+                    <div class="tooltip">
+                        Recursively divides array into sub-arrays (until length is 1) to sort while merging together.<br><br>
+                        <strong>Time Complexity:</strong> O(n log n)<br>
+                        <strong>Space Complexity:</strong> O(n)
+                    </div>
+                </li>
+                <li class="algoButton">
+                    <button id="tim">Tim Sort</button>
+                    <div class="tooltip">
+                        Uses a hybrid of insertion sort and merge sort. Divides array into runs, and sorts with insertion sort, then uses merge sort to merge these runs together.<br><br>
+                        <strong>Avg Time Complexity:</strong> O(n log n)<br>
+                        <strong>Space Complexity:</strong> O(n)
+                    </div>
+                </li>
+                <li class="algoButton">
+                    <button id="radix">Radix Sort</button>
+                    <div class="tooltip">
+                        Sorts algorithm elements by looking at the elements' individual digits, and sorting accordingly.<br><br>
+                        <strong>Avg Time Complexity:</strong> O(d * (n+b))<br>
+                        <strong>Space Complexity:</strong> O(n + b)<br>
+                        <em>d = # of digits, n = # of elements, b = num system base</em>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+        
+        <div class="sorting-options">
+            <h2>Sort by</h2>
+            <button class="sorting-option" id="hue">Hue</button>
+            <button class="sorting-option" id="saturation">Saturation</button>
+            <button class="sorting-option" id="lightness">Lightness</button>
+            <button class="sorting-option" id="red">Red</button>
+            <button class="sorting-option" id="green">Green</button>
+            <button class="sorting-option" id="blue">Blue</button>
+            
+        </div>
+    </div>
+    <table id="sorting-grid">
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
+    <script src="/scripts/sorting/control.js"></script>
+    <script src="/scripts/sorting/colors.js"></script>
+    <script src="/scripts/sorting/algorithms/common.js"></script>
+    <script src="/scripts/sorting/algorithms/bubble.js"></script>
+    <script src="/scripts/sorting/algorithms/insertion.js"></script>
+    <script src="/scripts/sorting/algorithms/selection.js"></script>
+    <script src="/scripts/sorting/algorithms/heap.js"></script>
+    <script src="/scripts/sorting/algorithms/quick.js"></script>
+    <script src="/scripts/sorting/algorithms/merge.js"></script>
+    <script src="/scripts/sorting/algorithms/tim.js"></script>
+    <script src="/scripts/sorting/algorithms/radix.js"></script>
+    <script src="/scripts/grid.js"></script>
+    <script src="/scripts/sorting/sorting.js"></script>
+</body>
+</html>
