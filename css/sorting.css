@@ -1,0 +1,185 @@
+.subheader {
+    background-color: #cfcfcf;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    margin-top: 5px; /* Adjusted for header height */
+}
+.subheader h1 {
+    font-size: 28px;
+    color: #333;
+    margin: 0 0 20px;
+}
+
+.num-section {
+    width: 5%
+}
+
+.control-section {
+    width: 15%;
+}
+
+.control-section button, .controls .speed-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.algorithms-section {
+    width: 60%;
+}
+
+.algorithms {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.algorithms button {
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.algorithms button:hover {
+    background-color: #333;
+    color: white;
+    border-color: #333;
+    cursor: grab;
+}
+
+.algorithms li:hover .tooltip {
+    display: block;
+}
+
+.sorting-options {
+    width: 20%;
+}
+
+.sorting-options button {
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    text-decoration: none;
+    padding: 4px 8px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.sorting-options button:hover {
+    background-color: #333;
+    color: white;
+    border-color: #333;
+    cursor: grab;
+}
+
+.controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: move;
+}
+.controls button, .controls .speed-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.controls button:hover, .controls .speed-button:hover {
+    background-color: #0056b3;
+}
+.controls input[type="range"] {
+    width: 150px;
+}
+#speedButton {
+    background-color: #28a745;
+}
+#speedButton:hover {
+    background-color: #218838;
+}
+
+.sort-by {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sort-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.sort-box {
+    width: 100px;
+    height: 40px;
+    border: 2px dashed #ccc;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+}
+
+#sorting-grid {
+    display: grid;
+    width: 100%;
+    height: 62vh;
+}
+
+.algoButton {
+    position: relative;
+}
+
+.tooltip {
+    display: none;        
+    position: absolute;
+    top: 115%;
+    left: 0%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px; /* Adjust as needed */
+            text-align: center;
+            word-wrap: break-word;
+        }
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 1%;
+            transform: scaleY(-1);
+            /*transform: translateX(-50%);*/
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+        .algorithms li:hover .tooltip {
+            display: block;
+        }
