@@ -7,7 +7,7 @@ let sorting_by = ['hue', 'saturation', 'lightness'];
 let numCells = 30;
 
 document.addEventListener('DOMContentLoaded', () => {
-    createGrid(); // Ensure the grid is created before trying to interact with it
+    createGrid();
     updateSortOption();
 
     const bubble = document.getElementById('bubble');
@@ -128,9 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     const slider = document.getElementById('slider');
-    let isDragging = false; // To track whether the slider is being dragged
+    let isDragging = false;
 
-    // When the slider is clicked (mousedown)
     slider.addEventListener('mousedown', () => {
         isDragging = true;
         if (playStatus === "playing") {
@@ -139,15 +138,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // When the slider is moved (mousemove)
     slider.addEventListener('mousemove', () => {
         if (isDragging && steps) {
             pos = parseInt((slider.value / slider.max) * steps.length);
-            updateGrid(steps[pos]); // Update the grid with the current step
+            updateGrid(steps[pos]);
         }
     });
 
-    // When the slider is released (mouseup)
     slider.addEventListener('mouseup', () => {
         isDragging = false;
     });
@@ -232,12 +229,13 @@ const getSortVal = (col) => {
 const createGrid = () => {
     const grid = document.getElementById('sorting-grid');
     const regionHeight = grid.offsetHeight;
-    const regionWidth = grid.offsetWidth; // Width of the grid container in pixels
+    const regionWidth = grid.offsetWidth;
+    slider.value = 0;
     unsorted_colors = [];
     unsorted_sort = [];
     let color, sort;
     for (let x=0; x<numCells**2; x++){
-        color = chroma.random()//getRandomSingleColor()
+        color = chroma.random()
         sort = getSortVal(color);
         unsorted_colors.push(color);
         unsorted_sort.push(sort);
@@ -249,79 +247,49 @@ const updateGrid = (data) => {
     const grid = document.getElementById('sorting-grid')
     const rows = grid.getElementsByTagName('tr');
 
-    // Iterate through each row
     let count = 0;
     for (let i = 0; i < rows.length; i++) {
       const cells = rows[i].getElementsByTagName('td');
       
-      // Iterate through each cell in the row
       for (let j = 0; j < cells.length; j++) {
         cells[j].style.backgroundColor = chroma(data.color[count]).hex()
-        //cells[j].textContent = data.sorting[count];
         count++;
       }
     }
-}
-
-const getValues = (grid) => {
-    let colors = [];
-    let values = [];
-    const rows = grid.getElementsByTagName('tr');
-
-    // Iterate through each row
-    let count = 0
-    for (let i = 0; i < rows.length; i++) {
-      const cells = rows[i].getElementsByTagName('td');
-      
-      // Iterate through each cell in the row
-      for (let j = 0; j < cells.length; j++) {
-        let color = rgbStringToObject(cells[j].style.backgroundColor);
-        let hsl = chroma(color).hsl()
-        let sort = hsl[0]**3 + hsl[2]**2 + hsl[1]
-        colors[count] = color;
-        let sorting = parseInt(cells[j].textContent);
-        cells[j].textContent = '';
-        values.push(sorting);
-        count++;
-      }
-    }
-    return {colors:colors, sorting:values}
 }
 
 const runSteps = (steps, speed = 120) => {
-    let index = 0; // To keep track of the current step
+    let index = 0;
     let indexMultiplier = parseFloat(document.getElementById('speedButton').textContent) || 1;
 
-    // Function to process the current step
     function processStep() {
         if (playStatus === "paused") {
-            clearInterval(intervalId); // Stop the interval if paused
+            clearInterval(intervalId);
             return;
         }
         if (index < steps.length) {
             slider.value = parseInt(index / steps.length * 100)
-            updateGrid(steps[parseInt(index)]); // Call the updateGrid function with the current step
-            index+=indexMultiplier; // Move to the next step
+            updateGrid(steps[index]);
+            index+=indexMultiplier;
         } else {
-            clearInterval(intervalId); // Stop the interval when all steps are processed
+            clearInterval(intervalId);
+            playStatus = "paused";
+            return
         }
     }
 
-    // Function to update the interval time based on the speed button's value
     function updateInterval() {
         const intervalTime = 1000 / (speed );
         return intervalTime;
     }
 
-    // Start the interval to process steps
     let intervalTime = updateInterval();
     const intervalId = setInterval(processStep, intervalTime);
 
-    // Optional: Update the interval time dynamically if speed can change
     const speedButton = document.getElementById('speedButton');
     speedButton.addEventListener('click', () => {
-        clearInterval(intervalId); // Stop the current interval
+        clearInterval(intervalId);
         indexMultiplier = parseFloat(document.getElementById('speedButton').textContent) || 1;
-        setInterval(processStep, intervalTime); // Restart the interval with the new time
+        setInterval(processStep, intervalTime);
     });
 }
