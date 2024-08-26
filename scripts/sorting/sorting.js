@@ -300,7 +300,7 @@ const runSteps = (steps, speed = 120) => {
         }
         if (index < steps.length) {
             slider.value = parseInt(index / steps.length * 100)
-            updateGrid(steps[index]); // Call the updateGrid function with the current step
+            updateGrid(steps[parseInt(index)]); // Call the updateGrid function with the current step
             index+=indexMultiplier; // Move to the next step
         } else {
             clearInterval(intervalId); // Stop the interval when all steps are processed
