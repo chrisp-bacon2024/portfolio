@@ -15,7 +15,7 @@ const insertionSort = (data) => {
         while (j >= 0 && sorting_arr[j] > key) 
         {  
             sorting_arr[j + 1] = sorting_arr[j];
-            color_arr[j+1] = sorting_arr[j]
+            color_arr[j+1] = color_arr[j]
             steps.push({color: [...color_arr], sorting: [...sorting_arr]})  
             j = j - 1;  
         }  
